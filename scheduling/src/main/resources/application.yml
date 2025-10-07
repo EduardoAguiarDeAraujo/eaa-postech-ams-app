@@ -19,6 +19,17 @@ spring:
     username: user
     password: 123456
 
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+  packages-to-scan: br.eng.eaa.scheduling.controller  # Pacote onde estão os controllers
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+
 logging:
   level:
     org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
