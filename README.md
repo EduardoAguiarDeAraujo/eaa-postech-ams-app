@@ -13,7 +13,7 @@ para cada perfil.
 O objetivo é desenvolver um backend simplificado e modular, com foco em segurança e comunicação assíncrona, garantindo que o
 sistema seja escalável, seguro e que utilize boas práticas de autenticação, autorização e comunicação entre serviços.
 
-### Secutiry
+### Security
 
 Autenticação com Spring Security: implementar autenticação básica para garantir que cada tipo de usuário tenha acesso controlado às funcionalidades. ​
 
