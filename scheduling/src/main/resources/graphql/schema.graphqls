@@ -1,7 +1,3 @@
-type Query {
-    appointmentsForPatient(patientName: String!, futureOnly: Boolean = false): [Appointment]
-}
-
 type Appointment {
     id: ID!
     patientName: String
@@ -9,4 +5,8 @@ type Appointment {
     dateTime: String
     description: String
     status: String
+}
+
+extend type Query {
+    appointmentsForPatient(patientName: String!, futureOnly: Boolean = false): [Appointment]
 }

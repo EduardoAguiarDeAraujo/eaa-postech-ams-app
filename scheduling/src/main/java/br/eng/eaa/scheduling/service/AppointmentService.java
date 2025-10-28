@@ -42,8 +42,6 @@ public class AppointmentService {
 
     @PreAuthorize("hasAnyRole('MEDICO', 'ENFERMEIRO', 'PACIENTE')")
     public List<Appointment> getAppointmentsForPatient(String patientName, boolean futureOnly) {
-        // Lógica simplificada; para paciente, assume username == patientName
-        // Em produção, integrar com user context
         List<Appointment> appointments = repository.findByPatientName(patientName);
         if (futureOnly) {
             return appointments.stream().filter(a -> a.getDateTime().isAfter(LocalDateTime.now())).toList();

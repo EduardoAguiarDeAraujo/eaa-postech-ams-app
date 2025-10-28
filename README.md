@@ -48,7 +48,7 @@ Serviço de Notificações: Recebe mensagens assíncronas via RabbitMQ e simula 
 ## 3. Descrição dos Endpoints
 
 Esta API fornece um conjunto de endpoints RESTful para gerenciar usuários, restaurantes, itens de menu e papéis (roles) dentro do sistema.<br>
-Todos os endpoints estão hospedados em http://localhost:8080/api/v1/ e assumem um corpo de requisição/resposta em JSON, quando aplicável.
+Todos os endpoints estão hospedados em http://localhost:8080 e assumem um corpo de requisição/resposta em JSON, quando aplicável.
 
 ## Configuração do Ambiente
 
@@ -69,9 +69,9 @@ Endpoint de Agendamento.
 
 - Criar Nova Consulta
   - Método: POST
-  - URL: /appointments
+  - URL: [/appointments](http://localhost:8080/appointments)
   - Descrição: Cria uma novo agendamento de consulta.
-  - Authorization: Tipo> Basic Auth; Username: medico, enfermeiro; Password: password
+  - Authorization: Tipo = Basic Auth; Username: medico, enfermeiro; Password: password
   
 ```json
 {
@@ -85,9 +85,9 @@ Endpoint de Agendamento.
 
 - Atualizar Consulta
   - Método: POST
-  - URL: /appointments/{id}
+  - URL: [/appointments/{id}](http://localhost:8080/appointments/1)
   - Descrição: Atualiza consulta agendada.
-  - Authorization: Tipo> Basic Auth; Username: medico; Password: password
+  - Authorization: Tipo = Basic Auth; Username: medico; Password: password
 ```json
 {
     "patientName": "paciente",
@@ -100,9 +100,21 @@ Endpoint de Agendamento.
 
 - Listar Consultas
   - Método: GET
-  - URL: /appointments/patient/{name}?futureOnly=true
-  - Descrição: Cria uma nova conta de usuário.
-  - Authorization: Tipo> Basic Auth; Username: medico, enfermeiro, paciente; Password: password
+  - URL: [/appointments/patient/{name}?futureOnly=true ](http://localhost:8080/appointments)
+  - Descrição: Consultar agendamentos de um paciente.
+  - Authorization: Tipo = Basic Auth; Username: medico, enfermeiro, paciente; Password: password
+
+
+- Listar Consultas GraphQL
+  - Método: POST
+  - URL: [/graphql](http://localhost:8080/graphql)
+  - Descrição: Consultar agendamentos de um paciente.
+  - Authorization: Tipo = Basic Auth; Username: medico, enfermeiro, paciente; Password: password
+```json
+{
+  "query": "query { appointmentsForPatient(patientName: \"paciente\") { id doctorName dateTime description } }"
+}
+```
 
 ## 8. Collections do Postman
 
