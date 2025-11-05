@@ -34,7 +34,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"patientName\": \"paciente\",\r\n    \"doctorName\": \"medico\",\r\n    \"dateTime\": \"2025-10-07T10:00:00\",\r\n    \"description\": \"Consulta de rotina\",\r\n    \"status\": \"SCHEDULED\"\r\n}",
+					"raw": "{\r\n    \"patientName\": \"paciente\",\r\n    \"doctorName\": \"medico\",\r\n    \"dateTime\": \"2025-11-10T10:00:00\",\r\n    \"description\": \"Consulta de rotina\",\r\n    \"status\": \"SCHEDULED\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -42,12 +42,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8081/appointments",
+					"raw": "http://localhost:8080/appointments",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8081",
+					"port": "8080",
 					"path": [
 						"appointments"
 					]
@@ -76,22 +76,16 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8081/appointments/patient/paciente?futureOnly=true",
+					"raw": "http://localhost:8080/appointments/patient/paciente",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8081",
+					"port": "8080",
 					"path": [
 						"appointments",
 						"patient",
 						"paciente"
-					],
-					"query": [
-						{
-							"key": "futureOnly",
-							"value": "true"
-						}
 					]
 				}
 			},
@@ -125,7 +119,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"patientName\": \"paciente\",\r\n    \"doctorName\": \"medico\",\r\n    \"dateTime\": \"2025-10-07T11:00:00\",\r\n    \"description\": \"Consulta de rotina - Atualizada\",\r\n    \"status\": \"SCHEDULED\"\r\n}",
+					"raw": "{\r\n    \"patientName\": \"paciente\",\r\n    \"doctorName\": \"medico\",\r\n    \"dateTime\": \"2025-11-15T11:00:00\",\r\n    \"description\": \"Consulta de rotina - Atualizada\",\r\n    \"status\": \"SCHEDULED\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -133,15 +127,58 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8081/appointments/1",
+					"raw": "http://localhost:8080/appointments/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8081",
+					"port": "8080",
 					"path": [
 						"appointments",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Appointments Graphql",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{login}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"query\": \"query { appointmentsForPatient(patientName: \\\"paciente\\\", futureOnly: false) { id doctorName dateTime description } }\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
 					]
 				}
 			},
